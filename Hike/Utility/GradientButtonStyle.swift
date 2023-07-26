@@ -16,6 +16,15 @@ struct GradientButton: ButtonStyle {
             .padding(.vertical)
             .padding(.horizontal, 30)
             .background(
+                configuration.isPressed ?
+                LinearGradient(
+                    colors: [
+                        .customGrayMedium,
+                        .customGrayLight],
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+                :
                 LinearGradient(
                     colors: [
                         .customGrayLight,

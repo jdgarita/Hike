@@ -8,10 +8,24 @@
 import SwiftUI
 
 struct CardView: View {
+    
+    @State private var imageNumber: Int = 1
+    @State private var randomNumber: Int = 1
+    
+    func randomImage() {
+        repeat {
+            randomNumber = Int.random(in: 1...5)
+        }
+        while randomNumber == imageNumber
+    
+        imageNumber = randomNumber
+    }
+    
     var body: some View {
         ZStack {
             
             CustomBackgroundView()
+            
             VStack {
                 
                 VStack(alignment: .leading) {
@@ -46,26 +60,16 @@ struct CardView: View {
                 .padding(.horizontal, 30)
                 
                 ZStack {
-                    Circle()
-                        .fill(
-                            LinearGradient(
-                                colors: [
-                                    Color("ColorIndigoMedium"),
-                                    Color("ColorSalmonLight")
-                                ],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
-                        )
-                        .frame(width: 256, height: 256)
+                    CustomCircleView()
                     
-                    Image("image-1")
+                    Image("image-\(imageNumber)")
                         .resizable()
                         .scaledToFit()
+                        .animation(.default, value: imageNumber)
                 }
                 
                 Button {
-                    
+                    randomImage()
                 } label: {
                     Text("Explore More")
                         .font(.title2)
