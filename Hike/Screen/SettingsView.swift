@@ -10,7 +10,6 @@ import SwiftUI
 struct SettingsView: View {
     var body: some View {
         List{
-            
             Section {
                 HStack {
                     Spacer()
@@ -58,6 +57,25 @@ struct SettingsView: View {
                 .frame(maxWidth: .infinity)
             }
             .listRowSeparator(.hidden)
+            
+            Section(
+                header: Text("ABOUT THE APP"),
+                footer: HStack {
+                    Spacer()
+                    Text("Copyright © All right reserved.")
+                    Spacer()
+                }
+                    .padding(.vertical, 8)
+            ){
+             
+                CustomListRowView(rowLabel: "Application", rowIcon: "apps.iphone", rowContent: "Hike", rowTintColor: .blue)
+                CustomListRowView(rowLabel: "Compatibility", rowIcon: "info.circle", rowContent: "iOS, iPadOS", rowTintColor: .red)
+                CustomListRowView(rowLabel: "Technology", rowIcon: "swift", rowContent: "Swift", rowTintColor: .orange)
+                CustomListRowView(rowLabel: "Version", rowIcon: "gear", rowContent: "1.0", rowTintColor: .purple)
+                CustomListRowView(rowLabel: "Developer", rowIcon: "ellipsis.curlybraces", rowContent: "JD", rowTintColor: .mint)
+                CustomListRowView(rowLabel: "Designer", rowIcon: "paintpalette", rowContent: "Robert Petras", rowTintColor: .pink)
+                CustomListRowView(rowLabel: "Website", rowIcon: "globe", rowTintColor: .indigo, rowLinkLabel: "Github Page", rowLinkDestination: "https://jdgarita.github.io/")
+            }
         }
     }
 }
